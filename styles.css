@@ -38,3 +38,9 @@ footer {
     font-size: 0.9em;
     color: #999;
 }
+
+.terminal:hover {
+    cursor: pointer;
+    box-shadow: 0 0 30px #00ff99;
+    transition: box-shadow 0.3s ease-in-out;
+}
