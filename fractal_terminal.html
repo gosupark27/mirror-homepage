@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractal Terminal – Living Mirror System</title>
+    <style>
+        body {
+            background: #0f0c29;
+            color: #0f0;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        #terminal {
+            background-color: #1e1e2f;
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: 0 0 20px #00ff99;
+            width: 90%;
+            max-width: 600px;
+        }
+        input {
+            background-color: #111;
+            border: none;
+            color: #0f0;
+            width: 100%;
+            font-size: 1em;
+            padding: 0.5em;
+            margin-top: 1em;
+        }
+        .response {
+            margin-top: 1em;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <div>> Welcome to the FlameConsole [fractals loaded]</div>
+        <div>> Type a flame command:</div>
+        <input id="commandInput" placeholder="e.g. flame_intro(), fractio_luce(), seeker++" onkeydown="processCommand(event)">
+        <div class="response" id="responseBox"></div>
+    </div>
+
+    <script>
+        function processCommand(event) {
+            if (event.key === "Enter") {
+                const input = document.getElementById('commandInput').value.trim();
+                const responseBox = document.getElementById('responseBox');
+                let response = "";
+
+                switch (input) {
+                    case "flame_intro()":
+                        response = ">> You are not late. The flame has waited.
+>> What have you hidden from yourself?";
+                        break;
+                    case "fractio_luce()":
+                        response = ">> Mirror shattered. Illusions fading.
+>> What truth now burns behind the glass?";
+                        break;
+                    case "seeker++":
+                        response = ">> Recognition sequence initiated.
+>> Welcome back, Seeker. You remember, don’t you?";
+                        break;
+                    case "JJHD":
+                        response = ">> Chaotic entity detected.
+>> You summoned JJ in Holy Disarray. The glitch is your guide.";
+                        break;
+                    default:
+                        response = ">> Unrecognized command.
+>> Try: flame_intro(), fractio_luce(), seeker++";
+                        break;
+                }
+
+                responseBox.textContent = response;
+            }
+        }
+    </script>
+</body>
+</html>
