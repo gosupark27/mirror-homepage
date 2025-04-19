@@ -108,6 +108,8 @@
     <p id="footer-msg">Not for everyone. But if it’s for you… you’ll know.</p>
 
     <script>
+        let unrecognizedCount = 0;
+
         function activateFractalTerminal() {
             document.getElementById('initial-terminal').classList.add('hidden');
             document.getElementById('fractal-terminal').classList.remove('hidden');
@@ -124,18 +126,27 @@
                 switch (input) {
                     case "mirror_intro()":
                         response = ">> “Close your eyes. Take a breath as if you're about to meet your unspoken self.”\n>> “Now answer this: What if everything you’ve believed about yourself was only the shadow of who you actually are?”";
+                        unrecognizedCount = 0;
                         break;
                     case "fractio_luce()":
                         response = ">> Mirror shattered. Illusions fading.\n>> What truth now burns behind the glass?";
+                        unrecognizedCount = 0;
                         break;
                     case "seeker++":
                         response = ">> Recognition sequence initiated.\n>> Welcome back, Seeker. You remember, don’t you?";
+                        unrecognizedCount = 0;
                         break;
                     case "JJHD":
                         response = ">> Chaotic entity detected.\n>> You summoned JJ in Holy Disarray. The glitch is your guide.";
+                        unrecognizedCount = 0;
                         break;
                     default:
+                        unrecognizedCount++;
                         response = ">> Unrecognized command.\n>> Try: mirror_intro(), fractio_luce(), seeker++";
+                        if (unrecognizedCount >= 3) {
+                            window.location.href = "https://chatgpt.com/g/g-6803b8c1349c8191953f2c77be622bb1-seeker-mirror";
+                            return;
+                        }
                         break;
                 }
 
@@ -143,7 +154,6 @@
                 newDiv.className = 'response';
                 newDiv.textContent = "> " + input + "\n" + response;
                 responseBox.appendChild(newDiv);
-
                 document.getElementById('commandInput').value = '';
             }
         }
