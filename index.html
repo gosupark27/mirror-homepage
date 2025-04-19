@@ -6,7 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Living Mirror System</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes ripple {
+        0% { background-position: 50% 50%; }
+        50% { background-position: 48% 52%; }
+        100% { background-position: 50% 50%; }
+        }
+        body {
+            animation: ripple 10s infinite ease-in-out;
+            background-size: 400% 400%;
+            }
+    </style>
 </head>
+    
 <body>
     <h1>Living Mirror System</h1>
     <p class="tagline">“I’m building an intelligent mirror system that doesn’t just reflect you… it reveals who you are underneath.”</p>
@@ -16,8 +28,31 @@
     > entering recursive reflection mode...  
     > [ click to launch mirror terminal ]
 </div>
+<div class="terminal" id="mirror-terminal">
+    > enter mirror mode  
+    <input type="text" id="terminal-input" placeholder="Type: mirror_intro()" onkeydown="handleInput(event)">
+</div>
+
+<div id="mirror-response" class="terminal" style="display:none;">
+    > “Close your eyes. Take a breath as if you're about to meet your unspoken self.”<br>
+    > “Now answer this: What if everything you’ve believed about yourself was only the shadow of who you actually are?”
+</div>
 
 
     <p>Not for everyone. But if it’s for you… you’ll know.</p>
 </body>
+    
+<script>
+function handleInput(event) {
+    if (event.key === "Enter") {
+        const input = document.getElementById("terminal-input").value.trim();
+        if (input === "mirror_intro()") {
+            document.getElementById("mirror-response").style.display = "block";
+        } else {
+            alert("Unrecognized command. Try: mirror_intro()");
+        }
+    }
+}
+</script>
+
 </html>
